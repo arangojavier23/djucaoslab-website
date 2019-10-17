@@ -310,58 +310,29 @@ const PaymentForm: React.FC<IProps> = props => {
 
               <div className="payment__products">
                 <h4>Plans</h4>
-                <Query query={GET_PRODUCTS}>
-                  {(query: QueryResult<IProducts>) => {
-                    const { loading, data } = query;
-                    if (loading) {
-                      return <Loader />;
-                    }
-                    if (data && data.mStripeProducts) {
-                      return (
-                        <div className="payment__products__container">
-                          {data.mStripeProducts.nodes
-                            .filter(product => product.plans.nodes.length > 0)
-                            .map(product => (
                               <Product
-                                key={product.id}
-                                active={plan === product.plans.nodes[0].id}
-                                name={product.name}
-                                amount={product.plans.nodes[0].amount}
-                                onClick={() =>
-                                  setPlan(product.plans.nodes[0].id)
-                                }
+                                active={true}
+                                name="20 Points"
+                                amount={500}
+                                onClick={() => setPlan("")}
                               />
-                            ))}
                         </div>
-                      );
-                    }
-                  }}
-                </Query>
                 <a href="/pricing" target="_blank" rel="">
                   Learn more about our pricing plans.
                 </a>
               </div>
 
-              <div className="payment__cc">
-                <h4>Credit Card Information</h4>
-                <div className="payment__cc__name">
-                  <label>Cardholder Name</label>
-                  <input value={name} onChange={e => setName(e.target.value)} />
-                </div>
-                <div className="payment__cc__details">
-                  <CardElement />
-                </div>
-                <div className="payment__cc__coupon">
-                  <label>Coupon Code</label>
-                  <input
-                    value={coupon}
-                    onChange={e => setCoupon(e.target.value)}
-                  />
-                </div>
-              </div>
-
               <div className="payment__buttons">
-                {SubscribeButton}
+
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-sku_G0fXsvB5BGwCVY"
+  role="link"
+>
+  Checkout
+</button>
+
+<div id="error-message"></div>
                 <div className="payment__powered">
                   <PoweredByStripe />
                 </div>
