@@ -316,7 +316,6 @@ const PaymentForm: React.FC<IProps> = props => {
                                 amount={500}
                                 onClick={() => setPlan("")}
                               />
-                        </div>
                 <a href="/pricing" target="_blank" rel="">
                   Learn more about our pricing plans.
                 </a>
