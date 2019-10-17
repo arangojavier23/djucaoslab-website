@@ -323,7 +323,16 @@ const PaymentForm: React.FC<IProps> = props => {
 
               <div className="payment__buttons">
 
-<button id="checkout-button-sku_G0fXsvB5BGwCVY">
+<button id="checkout-button-sku_G0fXsvB5BGwCVY" onClick={() => {
+
+  var stripe = Stripe('pk_live_2CqlJHWinGy2yltypgWDe90z00I6LbamtG');
+
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_G0fXsvB5BGwCVY', quantity: 1}],
+      successUrl: 'https://djuapp.launchaco.com/success',
+      cancelUrl: 'https://djuapp.launchaco.com/canceled',
+    })
+                  }}>
   Checkout
 </button>
 
