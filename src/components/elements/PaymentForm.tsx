@@ -323,11 +323,7 @@ const PaymentForm: React.FC<IProps> = props => {
 
               <div className="payment__buttons">
 
-<button
-  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-sku_G0fXsvB5BGwCVY"
-  role="link"
->
+<button id="checkout-button-sku_G0fXsvB5BGwCVY">
   Checkout
 </button>
 
