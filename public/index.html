@@ -28,6 +28,36 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <script src="https://js.stripe.com/v3/"></script>
+    <script>
+(function() {
+  var stripe = Stripe('pk_live_2CqlJHWinGy2yltypgWDe90z00I6LbamtG');
+
+  var checkoutButton = document.getElementById('checkout-button-sku_G0fXsvB5BGwCVY');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_G0fXsvB5BGwCVY', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://djuapp.launchaco.com/success',
+      cancelUrl: 'https://djuapp.launchaco.com/canceled',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
     <title>%REACT_APP_MY_APP_NAME%</title>
   </head>
   <body>
