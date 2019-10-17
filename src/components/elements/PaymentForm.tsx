@@ -1,3 +1,4 @@
+declare const Stripe: any;
 import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import {
