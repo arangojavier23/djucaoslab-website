@@ -1,4 +1,3 @@
-declare const Stripe: any;
 import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import {
@@ -326,9 +325,8 @@ const PaymentForm: React.FC<IProps> = props => {
 
 <button id="checkout-button-sku_G0fXsvB5BGwCVY" onClick={() => {
 
-  var stripe = Stripe('pk_live_2CqlJHWinGy2yltypgWDe90z00I6LbamtG');
 
-    stripe.redirectToCheckout({
+    GlobalStripe.redirectToCheckout({
       items: [{sku: 'sku_G0fXsvB5BGwCVY', quantity: 1}],
       successUrl: 'https://djuapp.launchaco.com/success',
       cancelUrl: 'https://djuapp.launchaco.com/canceled',
